@@ -75,10 +75,10 @@ mixOde1CptModel_bdf(const F& f,
                      const std::vector<std::vector<T4> >& theta,
                      const std::vector<std::vector<T5> >& biovar,
                      const std::vector<std::vector<T6> >& tlag,
-                     std::ostream* msgs = 0,
                      double rel_tol = 1e-6,
                      double abs_tol = 1e-6,
-                     long int max_num_steps = 1e6) {  // NOLINT(runtime/int)
+                    long int max_num_steps = 1e6,
+                     std::ostream* msgs = 0) {  // NOLINT(runtime/int)
   using std::vector;
   using Eigen::Dynamic;
   using Eigen::Matrix;
@@ -128,16 +128,16 @@ mixOde1CptModel_bdf(const F& f,
                      const std::vector<T4>& theta,
                      const std::vector<std::vector<T5> >& biovar,
                      const std::vector<std::vector<T6> >& tlag,
-                     std::ostream* msgs = 0,
                      double rel_tol = 1e-6,
                      double abs_tol = 1e-6,
-                     long int max_num_steps = 1e6) {  // NOLINT(runtime/int)
+                    long int max_num_steps = 1e6,
+                     std::ostream* msgs = 0) {  // NOLINT(runtime/int)
   std::vector<std::vector<T4> > vec_theta(1, theta);
 
   return mixOde1CptModel_bdf(f, nOde,
                               time, amt, rate, ii, evid, cmt, addl, ss,
                               vec_theta, biovar, tlag,
-                              msgs, rel_tol, abs_tol, max_num_steps);
+                              rel_tol, abs_tol, max_num_steps, msgs);
 }
 
 /**
@@ -162,17 +162,17 @@ mixOde1CptModel_bdf(const F& f,
                      const std::vector<T4>& theta,
                      const std::vector<T5>& biovar,
                      const std::vector<std::vector<T6> >& tlag,
-                     std::ostream* msgs = 0,
                      double rel_tol = 1e-6,
                      double abs_tol = 1e-6,
-                     long int max_num_steps = 1e6) {  // NOLINT(runtime/int)
+                    long int max_num_steps = 1e6,
+                     std::ostream* msgs = 0) {  // NOLINT(runtime/int)
   std::vector<std::vector<T4> > vec_theta(1, theta);
   std::vector<std::vector<T5> > vec_biovar(1, biovar);
 
   return mixOde1CptModel_bdf(f, nOde,
                               time, amt, rate, ii, evid, cmt, addl, ss,
                               vec_theta, vec_biovar, tlag,
-                              msgs, rel_tol, abs_tol, max_num_steps);
+                              rel_tol, abs_tol, max_num_steps, msgs);
 }
 
 /**
@@ -197,10 +197,10 @@ mixOde1CptModel_bdf(const F& f,
                      const std::vector<T4>& theta,
                      const std::vector<T5>& biovar,
                      const std::vector<T6>& tlag,
-                     std::ostream* msgs = 0,
                      double rel_tol = 1e-6,
                      double abs_tol = 1e-6,
-                     long int max_num_steps = 1e6) {  // NOLINT(runtime/int)
+                    long int max_num_steps = 1e6,
+                     std::ostream* msgs = 0) {  // NOLINT(runtime/int)
   std::vector<std::vector<T4> > vec_theta(1, theta);
   std::vector<std::vector<T5> > vec_biovar(1, biovar);
   std::vector<std::vector<T6> > vec_tlag(1, tlag);
@@ -208,7 +208,7 @@ mixOde1CptModel_bdf(const F& f,
   return mixOde1CptModel_bdf(f, nOde,
                               time, amt, rate, ii, evid, cmt, addl, ss,
                               vec_theta, vec_biovar, vec_tlag,
-                              msgs, rel_tol, abs_tol, max_num_steps);
+                              rel_tol, abs_tol, max_num_steps, msgs);
 }
 
 /**
@@ -233,17 +233,17 @@ mixOde1CptModel_bdf(const F& f,
                      const std::vector<T4>& theta,
                      const std::vector<std::vector<T5> >& biovar,
                      const std::vector<T6>& tlag,
-                     std::ostream* msgs = 0,
                      double rel_tol = 1e-6,
                      double abs_tol = 1e-6,
-                     long int max_num_steps = 1e6) {  // NOLINT(runtime/int)
+                    long int max_num_steps = 1e6,
+                     std::ostream* msgs = 0) {  // NOLINT(runtime/int)
   std::vector<std::vector<T4> > vec_theta(1, theta);
   std::vector<std::vector<T6> > vec_tlag(1, tlag);
 
   return mixOde1CptModel_bdf(f, nOde,
                               time, amt, rate, ii, evid, cmt, addl, ss,
                               vec_theta, biovar, vec_tlag,
-                              msgs, rel_tol, abs_tol, max_num_steps);
+                              rel_tol, abs_tol, max_num_steps, msgs);
 }
 
 /**
@@ -268,16 +268,16 @@ mixOde1CptModel_bdf(const F& f,
                      const std::vector<std::vector<T4> >& theta,
                      const std::vector<T5>& biovar,
                      const std::vector<std::vector<T6> >& tlag,
-                     std::ostream* msgs = 0,
                      double rel_tol = 1e-6,
                      double abs_tol = 1e-6,
-                     long int max_num_steps = 1e6) {  // NOLINT(runtime/int)
+                    long int max_num_steps = 1e6,
+                     std::ostream* msgs = 0) {  // NOLINT(runtime/int)
   std::vector<std::vector<T5> > vec_biovar(1, biovar);
 
   return mixOde1CptModel_bdf(f, nOde,
                               time, amt, rate, ii, evid, cmt, addl, ss,
                               theta, vec_biovar, tlag,
-                              msgs, rel_tol, abs_tol, max_num_steps);
+                              rel_tol, abs_tol, max_num_steps, msgs);
 }
 
 /**
@@ -302,17 +302,17 @@ mixOde1CptModel_bdf(const F& f,
                      const std::vector<std::vector<T4> >& theta,
                      const std::vector<T5>& biovar,
                      const std::vector<T6>& tlag,
-                     std::ostream* msgs = 0,
                      double rel_tol = 1e-6,
                      double abs_tol = 1e-6,
-                     long int max_num_steps = 1e6) {  // NOLINT(runtime/int)
+                    long int max_num_steps = 1e6,
+                     std::ostream* msgs = 0) {  // NOLINT(runtime/int)
   std::vector<std::vector<T5> > vec_biovar(1, biovar);
   std::vector<std::vector<T6> > vec_tlag(1, tlag);
 
   return mixOde1CptModel_bdf(f, nOde,
                               time, amt, rate, ii, evid, cmt, addl, ss,
                               theta, vec_biovar, vec_tlag,
-                              msgs, rel_tol, abs_tol, max_num_steps);
+                              rel_tol, abs_tol, max_num_steps, msgs);
 }
 
 
@@ -338,16 +338,16 @@ mixOde1CptModel_bdf(const F& f,
                      const std::vector<std::vector<T4> >& theta,
                      const std::vector<std::vector<T5> >& biovar,
                      const std::vector<T6>& tlag,
-                     std::ostream* msgs = 0,
                      double rel_tol = 1e-6,
                      double abs_tol = 1e-6,
-                     long int max_num_steps = 1e6) {  // NOLINT(runtime/int)
+                    long int max_num_steps = 1e6,
+                     std::ostream* msgs = 0) {  // NOLINT(runtime/int)
   std::vector<std::vector<T6> > vec_tlag(1, tlag);
 
   return mixOde1CptModel_bdf(f, nOde,
                               time, amt, rate, ii, evid, cmt, addl, ss,
                               theta, biovar, vec_tlag,
-                              msgs, rel_tol, abs_tol, max_num_steps);
+                              rel_tol, abs_tol, max_num_steps, msgs);
 }
 
 }
